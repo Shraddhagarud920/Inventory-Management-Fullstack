@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Pro | Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { --primary: #2563eb; --success: #22c55e; --danger: #ef4444; --bg: #f8fafc; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); margin: 0; padding: 40px; }
+        .dashboard { max-width: 1000px; margin: auto; background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+        .header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #e2e8f0; margin-bottom: 2rem; padding-bottom: 1rem; }
+        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 2rem; }
+        .stat-card { background: #eff6ff; padding: 1rem; border-radius: 8px; text-align: center; border: 1px solid #dbeafe; }
+        .form-inline { display: flex; gap: 10px; margin-bottom: 2rem; flex-wrap: wrap; }
+        input { flex: 1; padding: 12px; border: 1px solid #cbd5e1; border-radius: 6px; min-width: 150px; }
+        button { background: var(--primary); color: white; border: none; padding: 12px 24px; border-radius: 6px; cursor: pointer; font-weight: 600; transition: 0.2s; }
+        button:hover { opacity: 0.9; transform: translateY(-1px); }
+        table { width: 100%; border-collapse: collapse; }
+        th { background: #f1f5f9; padding: 12px; text-align: left; color: #64748b; text-transform: uppercase; font-size: 0.75rem; }
+        td { padding: 16px 12px; border-bottom: 1px solid #f1f5f9; }
+        .badge { padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; }
+        .btn-delete { background: var(--danger); padding: 8px 12px; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+<div class="dashboard">
+    <div class="header">
+        <h1><i class="fas fa-boxes"></i> Inventory Manager</h1>
+        <div id="connectionStatus" class="badge" style="background: #dcfce7; color: #166534;">System Online</div>
+    </div>
+
+    <div class="stats-grid">
+        <div class="stat-card">Total Items: <b id="totalItems">0</b></div>
+        <div class="stat-card">Stock Value: <b id="totalValue">$0.00</b></div>
+    </div>
+
+    <div class="form-inline">
+        <input type="text" id="name" placeholder="Product Name">
+        <input type="number" id="price" placeholder="Price">
+        <input type="number" id="quantity" placeholder="Quantity">
+        <button onclick="addProduct()"><i class="fas fa-plus"></i> Add Product</button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Product Details</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="productTable"></tbody>
+    </table>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
